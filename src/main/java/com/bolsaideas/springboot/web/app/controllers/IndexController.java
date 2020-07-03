@@ -22,6 +22,7 @@ public class IndexController {
 	
 	@RequestMapping({"/perfil" , "/profile"})
 	public String perfil(Model model) {
+		
 		Usuario usuario = new Usuario();
 		usuario.setNombre("Christian ");
 		usuario.setApellido("Peña");
@@ -30,6 +31,7 @@ public class IndexController {
 		model.addAttribute("usuario", usuario);
 		model.addAttribute("titulo", "perfil de usuario: ".concat(usuario.getNombre( )).concat(usuario.getApellido()) );
 		model.addAttribute("email", "Email:".concat(usuario.getEmail()));
+		
 		return "perfil";
 		
 	}
@@ -37,6 +39,11 @@ public class IndexController {
 	@RequestMapping("/lista")
 	public String lista(Model model) {
 		List<Usuario> usuarios = new ArrayList<>();
+		usuarios.add(new Usuario("Christian", "Peña", "Christian.valladarezz@gmail.com"));
+		usuarios.add(new Usuario("Juan", "Campos", "JuanCapos@gmail.com"));
+		usuarios.add(new Usuario("Felix", "Gerardo", "FelixG@gmail.com"));
+		usuarios.add(new Usuario("Fredy", "Chavez", "Fredy_Chavez@gmail.com"));
+		
 		model.addAttribute("titulo", "Listado de usuarios");
 		model.addAttribute("usuarios", usuarios);
 		
